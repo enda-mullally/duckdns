@@ -21,14 +21,14 @@ var updateCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		domains, err := cmd.Flags().GetString("domains")
 
-		if err != nil && len(domains) > 0 {
-			panic(err)
+		if err != nil || len(domains) == 0 {
+			panic("Invalid --domains value!")
 		}
 
 		token, err := cmd.Flags().GetString("token")
 
-		if err != nil && len(token) > 0 {
-			panic(err)
+		if err != nil || len(token) == 0 {
+			panic("Invalid --token value!")
 		}
 
 		ip, err := cmd.Flags().GetString("ip")
