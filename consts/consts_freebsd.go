@@ -1,4 +1,4 @@
 package consts
 
-//NewLine Os specific [Freebsd]
+// NewLine OS specific [Freebsd]
 const NewLine string = "\n"

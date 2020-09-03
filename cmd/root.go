@@ -13,7 +13,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "duckdns",
 	Short: "DuckDNS cli",
-	Long:  console.GetBannerText(),
+	Long:  console.GetFullBannerText(),
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
