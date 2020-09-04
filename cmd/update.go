@@ -18,26 +18,34 @@ var updateCmd = &cobra.Command{
   
   duckdns update -domains "dns01,dns02" -token "4292f3a3-2842-4ae3-8978-*************"`,
 
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		domains, err := cmd.Flags().GetString("domains")
 
-		if err != nil || len(domains) == 0 {
-			panic("Invalid --domains value!")
+		if err != nil {
+			return err
+		}
+
+		if len(domains) == 0 {
+			return fmt.Errorf("domains cannot be empty")
 		}
 
 		token, err := cmd.Flags().GetString("token")
 
-		if err != nil || len(token) == 0 {
-			panic("Invalid --token value!")
+		if err != nil {
+			return err
+		}
+
+		if len(token) == 0 {
+			return fmt.Errorf("token cannot be empty")
 		}
 
 		ip, err := cmd.Flags().GetString("ip")
 
 		if err != nil {
-			ip = ""
+			return err
 		}
 
-		doUpdate(domains, token, ip)
+		return doUpdate(domains, token, ip)
 	},
 }
 
@@ -52,7 +60,7 @@ func init() {
 	updateCmd.MarkFlagRequired("token")
 }
 
-func doUpdate(domains string, token string, ip string) {
+func doUpdate(domains string, token string, ip string) error {
 	fmt.Print(console.GetBannerText())
 
 	fmt.Println("Update started...")
@@ -75,7 +83,7 @@ func doUpdate(domains string, token string, ip string) {
 	res, err := http.DefaultClient.Do(req)
 
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	defer res.Body.Close()
@@ -84,6 +92,8 @@ func doUpdate(domains string, token string, ip string) {
 	if string(body) == "OK" {
 		fmt.Println("Update successful.")
 	} else {
-		fmt.Println("Update failed! Please check your params!")
+		return fmt.Errorf("Update failed! Please check your params")
 	}
+
+	return nil
 }
