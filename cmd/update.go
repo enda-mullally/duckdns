@@ -2,11 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
-	"net/http"
 
-	"github.com/enda-mullally/duckdns-cli/console"
-
+	"github.com/enda-mullally/duckdns-cli/api"
 	"github.com/spf13/cobra"
 )
 
@@ -45,7 +42,7 @@ var updateCmd = &cobra.Command{
 			return err
 		}
 
-		return doUpdate(domains, token, ip)
+		return api.Update(domains, token, ip)
 	},
 }
 
@@ -58,42 +55,4 @@ func init() {
 
 	updateCmd.MarkFlagRequired("domains")
 	updateCmd.MarkFlagRequired("token")
-}
-
-func doUpdate(domains string, token string, ip string) error {
-	fmt.Print(console.GetBannerText())
-
-	fmt.Println("Update started...")
-	fmt.Println("Domains:", domains)
-	fmt.Println("Token:", token)
-
-	if ip != "" {
-		fmt.Println("IP:", ip)
-	}
-
-	fmt.Println()
-
-	url := "https://www.duckdns.org/update?domains=" + domains + "&token=" + token + "&ip=" + ip
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("X-Application-Name", "duckdns-cli")
-	req.Header.Add("X-Application-Source", "https://github.com/enda-mullally/duckdns-cli")
-
-	res, err := http.DefaultClient.Do(req)
-
-	if err != nil {
-		return err
-	}
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body) // perhaps checking for a StatusCode of 200 is safer
-
-	if string(body) == "OK" {
-		fmt.Println("Update successful.")
-	} else {
-		return fmt.Errorf("Update failed! Please check your params")
-	}
-
-	return nil
 }
