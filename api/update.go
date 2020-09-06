@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/enda-mullally/duckdns-cli/console"
+	"github.com/enda-mullally/duckdns-cli/consts"
 )
 
 // Update - call the duckdns.org update endpoint. Basic HTTP request with url params.
@@ -15,14 +16,14 @@ func Update(domains string, token string, ip string) error {
 	fmt.Println("Domains:", domains)
 	fmt.Println("Token:", token)
 
-	if ip != "" {
+	if len(ip) > 0 {
 		fmt.Println("IP:", ip)
 	}
 
 	fmt.Println()
 	fmt.Print("Updating...")
 
-	url := "https://www.duckdns.org/update?domains=" + domains + "&token=" + token + "&ip=" + ip
+	url := fmt.Sprintf("https://www.duckdns.org/update?domains=%s&token=%s&ip=%s", domains, token, ip)
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -47,7 +48,7 @@ func Update(domains string, token string, ip string) error {
 	} else {
 		fmt.Println("Failed")
 
-		return fmt.Errorf("Update failed! DuckDNS.org didn't like your parameters")
+		return fmt.Errorf("Update failed! %s didn't like your parameters", consts.DuckDNSOrg)
 	}
 
 	return nil
