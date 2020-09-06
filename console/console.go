@@ -1,6 +1,10 @@
 package console
 
-import "github.com/enda-mullally/duckdns-cli/consts"
+import (
+	"fmt"
+
+	"github.com/enda-mullally/duckdns-cli/consts"
+)
 
 // GetFullBannerText - Returns the full application banner text
 func GetFullBannerText() string {
@@ -25,7 +29,7 @@ func getBannerText(full bool) string {
 
 	if full {
 		bannerText += consts.NewLine
-		bannerText += "DuckDNS is a command line tool (cli) for the popular DuckDNS.org service. https://www.duckdns.org/"
+		bannerText += fmt.Sprintf("DuckDNS is a command line tool (cli) for the popular %s service. https://www.duckdns.org/", consts.DuckDNSOrg)
 	}
 
 	bannerText += consts.NewLine
