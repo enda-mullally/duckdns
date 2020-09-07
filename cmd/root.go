@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/enda-mullally/duckdns-cli/console"
-	"github.com/enda-mullally/duckdns-cli/consts"
+	"github.com/enda-mullally/duckdns/console"
+	"github.com/enda-mullally/duckdns/consts"
 	"github.com/spf13/cobra"
 )
 

@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/enda-mullally/duckdns-cli/console"
-	"github.com/enda-mullally/duckdns-cli/consts"
+	"github.com/enda-mullally/duckdns/console"
+	"github.com/enda-mullally/duckdns/consts"
 )
 
 // Update - call the duckdns.org update endpoint. Basic HTTP request with url params.
@@ -28,7 +28,7 @@ func Update(domains string, token string, ip string) error {
 	req, _ := http.NewRequest("GET", url, nil)
 
 	req.Header.Add("X-Application-Name", "duckdns-cli")
-	req.Header.Add("X-Application-Source", "https://github.com/enda-mullally/duckdns-cli")
+	req.Header.Add("X-Application-Source", "https://github.com/enda-mullally/duckdns")
 
 	res, err := http.DefaultClient.Do(req)
 

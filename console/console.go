@@ -3,7 +3,7 @@ package console
 import (
 	"fmt"
 
-	"github.com/enda-mullally/duckdns-cli/consts"
+	"github.com/enda-mullally/duckdns/consts"
 )
 
 // GetFullBannerText - Returns the full application banner text

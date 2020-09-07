@@ -21,8 +21,53 @@ Flags:
       --version   Displays the current version of this tool
 
 Use "duckdns [command] --help" for more information about a command.
+
 ```
 
 #
 
-Work in progress...
+# Building and running duckdns #
+
+```
+go get github.com/enda-mullally/duckdns
+        
+cd %GOPATH%/src/github.com/enda-mullally/duckdns
+    
+go build
+```
+
+# Help
+
+```
+duckdns --help
+```
+
+# Usage
+
+## Updating your DuckDNS.org domains via the update command using the flags --domains, --token ##
+<br />
+
+```
+duckdns update --domains "a9275" --token "496462d1-0cf8-4292-aa00-************"
+
+duckdns update --env
+```
+
+### If you need to use a specific ip, provide the --ip flag
+<br />
+
+```
+duckdns update --domains "a9275" --token "496462d1-0cf8-4292-aa00-************" --ip 10.0.0.1
+```
+
+## Updating your DuckDNS.org domains via environment flags ##
+
+### If you have set your env vars DUCKDNS_DOMAINS, DUCKDNS_TOKEN and optionally DUCKDNS_IP you can run duckdns in *--env mode* ###
+<br />
+
+```
+duckdns update --env
+```
+<br />
+
+![Screenshot](/screenshots/Scr01.png)

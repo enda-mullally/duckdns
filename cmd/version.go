@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/enda-mullally/duckdns-cli/consts"
+	"github.com/enda-mullally/duckdns/consts"
 	"github.com/spf13/cobra"
 )
 
