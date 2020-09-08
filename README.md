@@ -49,8 +49,6 @@ duckdns --help
 
 ```
 duckdns update --domains "a9275" --token "496462d1-0cf8-4292-aa00-************"
-
-duckdns update --env
 ```
 
 ### If you need to use a specific ip, provide the --ip flag
