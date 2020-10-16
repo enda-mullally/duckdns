@@ -1,6 +1,6 @@
-# duckdns
+# DuckDNS #
 
-```
+```shell
  ____                _     ____   _   _  ____
 |  _ \  _   _   ___ | | __|  _ \ | \ | |/ ___|
 | | | || | | | / __|| |/ /| | | ||  \| |\___ \
@@ -24,11 +24,9 @@ Use "duckdns [command] --help" for more information about a command.
 
 ```
 
-#
+## @icon-wrench Building and running duckdns ##
 
-# Building and running duckdns #
-
-```
+```shell
 go get github.com/enda-mullally/duckdns
         
 cd %GOPATH%/src/github.com/enda-mullally/duckdns
@@ -36,34 +34,32 @@ cd %GOPATH%/src/github.com/enda-mullally/duckdns
 go build
 ```
 
-# Help
+## @icon-question-circle Help
 
-```
+```shell
 duckdns --help
 ```
 
-# Usage
+## @icon-window-maximize Usage
 
-## Updating your DuckDNS.org domains via the update command using the flags --domains, --token ##
-<br />
+Updating your DuckDNS.org domains via the update command using the flags **--domains**, **--token**
 
-```
+```shell
 duckdns update --domains "a9275" --token "496462d1-0cf8-4292-aa00-************"
 ```
 
-### If you need to use a specific ip, provide the --ip flag
+If you need to use a specific ip, provide the flag **--ip**
 <br />
 
-```
+```shell
 duckdns update --domains "a9275" --token "496462d1-0cf8-4292-aa00-************" --ip 10.0.0.1
 ```
+Updating your DuckDNS.org domains via environment flags
 
-## Updating your DuckDNS.org domains via environment flags ##
-
-### If you have set your env vars DUCKDNS_DOMAINS, DUCKDNS_TOKEN and optionally DUCKDNS_IP you can run duckdns in *--env mode* ###
+If you have set your env vars ***DUCKDNS_DOMAINS***, ***DUCKDNS_TOKEN*** and optionally ***DUCKDNS_IP*** you can run duckdns in **--env mode**
 <br />
 
-```
+```shell
 duckdns update --env
 ```
 <br />
