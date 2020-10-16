@@ -24,7 +24,7 @@ Use "duckdns [command] --help" for more information about a command.
 
 ```
 
-## @icon-wrench Building and running duckdns ##
+## Building and running duckdns ##
 
 ```shell
 go get github.com/enda-mullally/duckdns
@@ -34,13 +34,13 @@ cd %GOPATH%/src/github.com/enda-mullally/duckdns
 go build
 ```
 
-## @icon-question-circle Help
+## Help
 
 ```shell
 duckdns --help
 ```
 
-## @icon-window-maximize Usage
+## Usage
 
 Updating your DuckDNS.org domains via the update command using the flags **--domains**, **--token**
 
